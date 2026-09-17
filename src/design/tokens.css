@@ -1,0 +1,75 @@
+:root {
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px;
+  --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-16: 64px; --space-24: 96px; --space-32: 128px;
+
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 18px; --radius-xl: 28px; --radius-full: 999px;
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-display: "Instrument Serif", Georgia, serif;
+
+  --text-xs: 12px; --text-sm: 14px; --text-md: 16px; --text-lg: 18px; --text-xl: 22px;
+  --text-2xl: 32px; --text-3xl: clamp(40px, 5.6vw, 72px); --text-hero: clamp(64px, 13vw, 184px);
+
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-in: cubic-bezier(.4, 0, 1, 1);
+  --spring: linear(0, .009, .035 2.1%, .141 4.4%, .723 12.9%, .938 16.7%, 1.017 19.4%, 1.061 22.3%, 1.066 25.7%, 1.017 34.1%, .994 41.2%, 1.001 58.8%, 1);
+  --dur-fast: 160ms; --dur-base: 260ms; --dur-slow: 520ms;
+
+  --container: 1200px;
+  --reading: 62ch;
+  --gutter: 16px;
+}
+@media (min-width: 768px) { :root { --gutter: 40px; } }
+
+:root, :root[data-theme="light"] {
+  color-scheme: light;
+  --bg: oklch(98.2% .006 80);
+  --bg-deep: oklch(95.5% .008 80);
+  --surface: oklch(99.6% .003 80);
+  --surface-2: oklch(96.4% .007 80);
+  --surface-3: oklch(93.5% .009 80);
+  --border: oklch(20% .02 260 / .09);
+  --border-strong: oklch(20% .02 260 / .18);
+  --text: oklch(21% .018 262);
+  --text-muted: oklch(46% .014 262);
+  --text-faint: oklch(60% .012 262);
+  --accent: oklch(57% .135 55);
+  --accent-2: oklch(55% .11 200);
+  --accent-soft: oklch(57% .135 55 / .1);
+  --accent-fg: oklch(99% 0 0);
+  --gold: oklch(66% .13 80); --silver: oklch(58% .02 262); --bronze: oklch(56% .1 45);
+  --highlight: oklch(100% 0 0 / .8);
+  --shadow-sm: 0 1px 1px oklch(30% .03 262 / .04), 0 2px 6px oklch(30% .03 262 / .04);
+  --shadow-md: 0 1px 1px oklch(30% .03 262 / .04), 0 4px 8px oklch(30% .03 262 / .04), 0 16px 32px oklch(30% .03 262 / .06);
+  --shadow-lg: 0 2px 4px oklch(30% .03 262 / .04), 0 12px 24px oklch(30% .03 262 / .06), 0 40px 80px oklch(30% .03 262 / .1);
+  --glow-a: oklch(85% .09 70 / .55);
+  --glow-b: oklch(85% .06 210 / .45);
+  --grain-opacity: .05;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: oklch(14.5% .008 265);
+  --bg-deep: oklch(12% .008 265);
+  --surface: oklch(18% .01 265);
+  --surface-2: oklch(21.5% .011 265);
+  --surface-3: oklch(25% .012 265);
+  --border: oklch(100% 0 0 / .075);
+  --border-strong: oklch(100% 0 0 / .15);
+  --text: oklch(95.5% .005 80);
+  --text-muted: oklch(73% .01 265);
+  --text-faint: oklch(57% .01 265);
+  --accent: oklch(82% .115 72);
+  --accent-2: oklch(78% .08 205);
+  --accent-soft: oklch(82% .115 72 / .12);
+  --accent-fg: oklch(17% .02 60);
+  --gold: oklch(84% .12 85); --silver: oklch(82% .015 265); --bronze: oklch(72% .1 50);
+  --highlight: oklch(100% 0 0 / .07);
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / .3);
+  --shadow-md: 0 1px 2px oklch(0% 0 0 / .3), 0 8px 24px oklch(0% 0 0 / .3);
+  --shadow-lg: 0 2px 4px oklch(0% 0 0 / .3), 0 24px 64px oklch(0% 0 0 / .5);
+  --glow-a: oklch(55% .11 65 / .2);
+  --glow-b: oklch(50% .08 220 / .16);
+  --grain-opacity: .07;
+}

@@ -1,0 +1,11 @@
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+@media (min-width: 760px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid > [data-size="hero"], .grid > [data-size="wide"] { grid-column: 1 / -1; }
+}
+@media (min-width: 1100px) {
+  .grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-5); }
+  .grid > * { grid-column: span 2; }
+  .grid > [data-size="hero"] { grid-column: span 4; }
+  .grid > [data-size="wide"] { grid-column: span 4; }
+}

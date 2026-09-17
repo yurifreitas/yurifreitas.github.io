@@ -1,0 +1,56 @@
+@import "./tokens.css";
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+:root[data-theme="dark"] body { -webkit-font-smoothing: antialiased; }
+
+/* grão: mata banding dos gradientes e o aspecto plástico */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+img, canvas, svg { display: block; max-width: 100%; }
+button, input { font: inherit; color: inherit; background: none; border: 0; }
+button { cursor: pointer; }
+ul, ol { list-style: none; }
+::selection { background: var(--accent); color: var(--accent-fg); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+.container { width: 100%; max-width: calc(var(--container) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
+.num { font-variant-numeric: tabular-nums slashed-zero; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* entrada: fade + 10px + blur leve, escalonado por --i */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(4px);
+  transition:
+    opacity 700ms var(--ease-out) calc(var(--i, 0) * 45ms),
+    transform 700ms var(--ease-out) calc(var(--i, 0) * 45ms),
+    filter 700ms var(--ease-out) calc(var(--i, 0) * 45ms);
+}
+.reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { transform: none; filter: none; transition: opacity 300ms linear; }
+}

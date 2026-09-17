@@ -1,0 +1,10 @@
+.dot {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: oklch(68% .14 var(--h));
+  box-shadow: 0 0 0 3px oklch(68% .14 var(--h) / .16);
+}
+:root[data-theme="dark"] .dot { background: oklch(78% .12 var(--h)); box-shadow: 0 0 0 3px oklch(78% .12 var(--h) / .14); }

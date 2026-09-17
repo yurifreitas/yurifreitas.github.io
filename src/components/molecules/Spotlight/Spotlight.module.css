@@ -1,0 +1,38 @@
+.spotlight {
+  --x: 50%;
+  --y: 0%;
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--border), inset 0 1px 0 var(--highlight), var(--shadow-sm);
+  transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--x) var(--y), var(--accent-soft), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(260px circle at var(--x) var(--y), color-mix(in oklch, var(--accent) 55%, transparent), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+@media (hover: hover) {
+  .spotlight:hover { box-shadow: inset 0 0 0 1px var(--border-strong), inset 0 1px 0 var(--highlight), var(--shadow-md); }
+  .spotlight:hover::before, .spotlight:hover::after { opacity: 1; }
+}

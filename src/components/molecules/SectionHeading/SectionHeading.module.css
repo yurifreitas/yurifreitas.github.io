@@ -1,0 +1,20 @@
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+.text { display: grid; gap: var(--space-5); max-width: 760px; }
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-3xl);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.lead { max-width: 56ch; font-size: var(--text-lg); color: var(--text-muted); text-wrap: pretty; }
+.aside { display: flex; }
+@media (min-width: 768px) { .heading { margin-bottom: var(--space-16); } }

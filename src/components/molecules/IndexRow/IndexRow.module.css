@@ -1,0 +1,60 @@
+.item {
+  animation: rowIn 520ms var(--ease-out) both;
+  animation-delay: calc(var(--i) * 22ms);
+}
+@keyframes rowIn { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .item { animation: none; } }
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  grid-template-areas: "year name end" ". line line";
+  align-items: baseline;
+  column-gap: var(--space-4);
+  row-gap: 2px;
+  padding: var(--space-4) var(--space-3);
+  margin: 0 calc(var(--space-3) * -1);
+  border-radius: var(--radius-md);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.row::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 0;
+  height: 1px;
+  background: var(--border);
+}
+a.row:hover { background: var(--surface-2); }
+a.row:hover::after { opacity: 0; }
+
+.year { grid-area: year; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-faint); }
+.name { grid-area: name; display: inline-flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: -.01em; min-width: 0; }
+.name > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.line { grid-area: line; font-size: var(--text-sm); color: var(--text-muted); }
+.stack { display: none; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-faint); white-space: nowrap; }
+.end {
+  grid-area: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.end[data-public] { color: var(--text-muted); transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+a.row:hover .end[data-public] { color: var(--accent); transform: translate(2px, -2px); }
+
+@media (min-width: 900px) {
+  .row {
+    grid-template-columns: 56px minmax(180px, 240px) minmax(0, 1fr) 200px 84px;
+    grid-template-areas: "year name line stack end";
+    align-items: center;
+  }
+  .line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stack { display: block; overflow: hidden; text-overflow: ellipsis; }
+  .end { justify-self: end; }
+}

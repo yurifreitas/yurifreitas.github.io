@@ -1,0 +1,13 @@
+.page { position: relative; min-height: 100dvh; }
+.skip {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 300;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--text);
+  color: var(--bg);
+  transform: translateY(-200%);
+}
+.skip:focus { transform: none; }
